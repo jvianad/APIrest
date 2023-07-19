@@ -3,6 +3,8 @@ import com.example.app.APIrest.Model.Task;
 import com.example.app.APIrest.Repository.iToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -17,6 +19,12 @@ public class TaskController {
         return todorepository.findAll();
     }
     
+    @PostMapping(value = "/savetask")
+    public String saveTask(@RequestBody Task task){
+        todorepository.save(task);
+        return "Saved Task";
+    }
 
+    
 
 }
