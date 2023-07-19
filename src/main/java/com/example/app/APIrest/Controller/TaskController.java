@@ -31,4 +31,11 @@ public class TaskController {
         return "Updated task";
     }
 
+    @DeleteMapping(value = "/deletetask/{id}")
+    public String deleteTask(@PathVariable long id){
+        Task deletedTask = todorepository.findById(id).get();
+        todorepository.delete(deletedTask);
+        return "Deleted task";
+    }
+
 }
